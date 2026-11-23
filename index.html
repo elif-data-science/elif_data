@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elif Darıcı | Bioengineer & Bioinformatics Researcher</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            --border: #374151;
+            --code-bg: #030712;
+            --shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent: #0284c7;
+            --accent-hover: #0369a1;
+            --accent-gradient: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%);
+            --border: #e2e8f0;
+            --code-bg: #f1f5f9;
+            --shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] header {
+            background: rgba(248, 250, 252, 0.85);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent);
+        }
+
+        section {
+            padding: 6rem 2rem 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            padding-top: 8rem;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 0.8rem;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+            margin-left: 1rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .skill-category {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.25rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            transform: translateX(-5px);
+            box-shadow: 0 0 0 4px var(--bg-primary);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-family: 'Fira Code', monospace;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .project-icon {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .project-links a {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .project-links a:hover {
+            color: var(--accent);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            background: var(--bg-secondary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.4rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 6rem;
+            }
+
+            .hero-description {
+                margin: 0 auto 2rem;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">&lt;ElifDarıcı /&gt;</a>
+            <ul class="nav-links">
+                <li><a href="#about">Hakkımda</a></li>
+                <li><a href="#skills">Yetenekler</a></li>
+                <li><a href="#experience">Eğitim & Deneyim</a></li>
+                <li><a href="#projects">Projeler</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Tema Değiştir">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="badge">Biyomühendis & Araştırmacı</span>
+                <h1 class="hero-title">Elif Darıcı</h1>
+                <h2 class="hero-subtitle">MSc Candidate in Cancer Biology & Pharmacology</h2>
+                <p class="hero-description">
+                    Biyoenformatik, omiks veri analizi (RNA-seq, TCGA, GEO) ve kanser biyolojisi alanında uzmanlaşmış biyomühendis. Biyolojik verileri anlamlı klinik içgörülere dönüştürmek üzerine çalışıyorum.
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://www.linkedin.com/in/elif-dar%C4%B1c%C4%B1-67b21b295/" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-linkedin"></i> LinkedIn Profilim
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> İletişime Geç
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title"><i class="fas fa-user-dna"></i> Hakkımda</h2>
+            <div class="card">
+                <p style="margin-bottom: 1rem;">
+                    Lisans eğitimimi Biyomühendislik alanında tamamladıktan sonra yüksek lisansımda Kanser Biyolojisi ve Farmakolojisi üzerine yoğunlaştım. Araştırmalarım temel olarak kanser omiks verilerinin analizi, RNA-seq veri işleme hatları ve biyobelirteç keşfi üzerinedir.
+                </p>
+                <p>
+                    Kuru laboratuvar (dry-lab) biyoenformatik araçları ve R/Linux tabanlı veri analitiği ile ıslak laboratuvar biyolojisi arasında köprü kurarak nitelikli araştırmalar yürütmeyi hedefliyorum.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title"><i class="fas fa-laptop-code"></i> Teknik Yetenekler</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-microchip"></i> Biyoenformatik & Omiks</h3>
+                        <div class="tags">
+                            <span class="tag">RNA-seq Analysis</span>
+                            <span class="tag">TCGA-SKCM</span>
+                            <span class="tag">GEO Data Mining</span>
+                            <span class="tag">FASTQ Preprocessing</span>
+                            <span class="tag">Differential Expression</span>
+                        </div>
+                    </div>
+                    <div class="skill-category" style="margin-bottom: 0;">
+                        <h3><i class="fas fa-terminal"></i> Programlama & Veri Analizi</h3>
+                        <div class="tags">
+                            <span class="tag">R / RStudio</span>
+                            <span class="tag">Linux / Ubuntu Terminal</span>
+                            <span class="tag">Bioconductor</span>
+                            <span class="tag">DESeq2 / edgeR</span>
+                            <span class="tag">Git & GitHub</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-flask"></i> Laboratuvar & Biyoloji</h3>
+                        <div class="tags">
+                            <span class="tag">Kanser Biyolojisi</span>
+                            <span class="tag">Farmakoloji</span>
+                            <span class="tag">Moleküler Onkoloji</span>
+                            <span class="tag">Hücre Kültürü</span>
+                        </div>
+                    </div>
+                    <div class="skill-category" style="margin-bottom: 0;">
+                        <h3><i class="fas fa-language"></i> Diller & Sertifikalar</h3>
+                        <div class="tags">
+                            <span class="tag">İngilizce (Oxford C1 - 96/100)</span>
+                            <span class="tag">İspanyolca (A1 Başlangıç)</span>
+                            <span class="tag">Türkçe (Ana Dil)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Education Section -->
+        <section id="experience">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Eğitim ve Akademik Geçmiş</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Devam Ediyor</div>
+                    <h3 class="timeline-title">Yüksek Lisans (MSc) - Kanser Biyolojisi ve Farmakolojisi</h3>
+                    <div class="timeline-subtitle">Lisansüstü Tez Çalışması</div>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                        Kanser omiks verileri ve RNA-seq analiz hatları üzerinde biyoenformatik odaklı tez projesi yürütülmektedir.
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Lisans Derecesi</div>
+                    <h3 class="timeline-title">Biyomühendislik (Bioengineering)</h3>
+                    <div class="timeline-subtitle">Lisans Eğitimi</div>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                        Moleküler biyoloji, veri analizi ve mühendislik prensipleri üzerine odaklı lisans eğitimi.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title"><i class="fas fa-project-diagram"></i> Projeler & Araştırmalar</h2>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterProjects('all')">Tümü</button>
+                <button class="filter-btn" onclick="filterProjects('rnaseq')">RNA-Seq</button>
+                <button class="filter-btn" onclick="filterProjects('tcga')">TCGA / GEO</button>
+                <button class="filter-btn" onclick="filterProjects('r-stats')">R & İstatistik</button>
+            </div>
+
+            <div class="grid-2">
+                <div class="card project-card" data-category="rnaseq tcga">
+                    <div>
+                        <div class="project-header">
+                            <i class="fas fa-dna project-icon"></i>
+                            <div class="project-links">
+                                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3 style="margin-bottom: 0.5rem;">TCGA-SKCM Melanom Veri İşleme Pipeline</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+                            TCGA veritabanından alınan Melanom (SKCM) gen ifade verilerinin R/Bioconductor paketleri ile kalite kontrolü ve diferansiyel gen ekspresyon analizi.
+                        </p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">R</span>
+                        <span class="tag">TCGA</span>
+                        <span class="tag">DESeq2</span>
+                    </div>
+                </div>
+
+                <div class="card project-card" data-category="rnaseq r-stats">
+                    <div>
+                        <div class="project-header">
+                            <i class="fas fa-chart-bar project-icon"></i>
+                            <div class="project-links">
+                                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3 style="margin-bottom: 0.5rem;">Ham FASTQ Kalite Kontrolü & Hizalama</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+                            Linux terminal ortamında FastQC ve Trimmomatic araçları ile ham sekanslama verilerinin temizlenmesi ve referans genoma hizalanması.
+                        </p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Linux</span>
+                        <span class="tag">FastQC</span>
+                        <span class="tag">RNA-seq</span>
+                    </div>
+                </div>
+
+                <div class="card project-card" data-category="tcga r-stats">
+                    <div>
+                        <div class="project-header">
+                            <i class="fas fa-search-dollar project-icon"></i>
+                            <div class="project-links">
+                                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3 style="margin-bottom: 0.5rem;">GEO Veri Madenciliği ve Biyobelirteç Analizi</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+                            NCBI GEO mikrodizi ve RNA-seq veri kümesinden kanser ilişkili hedef biyobelirteçlerin tespiti ve zenginleştirme analizleri (GSEA).
+                        </p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">GEO</span>
+                        <span class="tag">GSEA</span>
+                        <span class="tag">RStudio</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title"><i class="fas fa-envelope"></i> İletişim</h2>
+            <div class="card" style="text-align: center; padding: 3rem 1.5rem;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Benimle İletişime Geçin</h3>
+                <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 2rem;">
+                    Biyoenformatik projeleri, akademik iş birlikleri veya kariyer fırsatları için LinkedIn üzerinden bağlantı kurabilirsiniz.
+                </p>
+                <a href="https://www.linkedin.com/in/elif-dar%C4%B1c%C4%B1-67b21b295/" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-linkedin"></i> LinkedIn'de Mesaj Gönder
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/elif-dar%C4%B1c%C4%B1-67b21b295/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="mailto:example@domain.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p>&copy; 2026 Elif Darıcı. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        // Tema Değiştirme Kodu
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        const icon = themeToggleBtn.querySelector('i');
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        });
+
+        // Proje Filtreleme Kodu
+        function filterProjects(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            const projects = document.querySelectorAll('.project-card');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            projects.forEach(project => {
+                if (category === 'all' || project.getAttribute('data-category').includes(category)) {
+                    project.style.display = 'flex';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
